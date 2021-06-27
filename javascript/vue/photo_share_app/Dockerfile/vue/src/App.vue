@@ -1,15 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <img alt="Vue logo" src="./assets/logo.png"/>
+
+
+  <ModalView>
+
+  </ModalView>
+
+  <TaskPage></TaskPage>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TaskPage from './pages/tasks/TaskPage.vue';
+import ModalView from './components/common/ModalView.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ModalView,
+    TaskPage
   }
 }
 </script>
+
+<style lang="scss" scoped>
+</style>

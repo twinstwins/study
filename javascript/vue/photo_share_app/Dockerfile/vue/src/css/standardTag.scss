@@ -1,0 +1,33 @@
+button {
+  letter-spacing: 0.05rem;
+  position: relative;
+  background: white;
+  color: #401aff;
+  border-radius: 0.2rem;
+  transition: 0.2s all ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+}
+
+input {
+  background: #ecf0f1;
+  padding: 10px;
+  color: #7f8c8d;
+  border-style: solid;
+  border-width: 0;
+  border-bottom-width: 3px;
+  border-color: #bdc3c7;
+  outline: none;
+  border-radius: 5px 0px 5px 0px;
+  -webkit-transition: 0.1s ease-in-out;
+
+  &:focus {
+    border-color: #3498db;
+    color: #34495e;
+  }
+}
+
+　
