@@ -2,15 +2,20 @@
 
   <div class="modal">
 
-    <slot>
-
-    </slot>
-
     <button @click="openModal">
-      開く
+      {{ modalOpenButtonText }}
     </button>
 
-    <ModalView @close="closeModal" v-show="isShow">
+    <ModalView v-show="isShow">
+
+      <slot @click="closeModal">
+
+      </slot>
+
+      <button @click="closeModal">
+        完了
+      </button>
+
     </ModalView>
 
 
@@ -26,6 +31,11 @@ export default {
   name: "modal",
   components: {
     ModalView
+  },
+  props: {
+    modalOpenButtonText: {
+      type: String
+    }
   },
   data() {
     return {

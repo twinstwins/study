@@ -8,11 +8,15 @@
            @click="$emit('close')"
       >
 
-        <p>こいつがモーダルウィンドウです</p>
+        <p>ユーザー情報を編集</p>
+        <slot>
+
+        </slot>
 
       </div>
 
     </div>
+
 
 
   </div>
