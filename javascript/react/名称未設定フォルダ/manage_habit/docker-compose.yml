@@ -1,0 +1,31 @@
+#TODO: コンテナ名を付ける
+
+version: '3'
+services:
+  nginx:
+    image: nginx:1.15.6
+    ports:
+      - '8000:80'
+    depends_on:
+      - php
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/html
+  php:
+    build: ./docker/php
+    volumes:
+      - .:/var/www/html
+  mysql:
+    image: mysql:5.7
+    platform: linux/x86_64 # M1チップ対応のため追記
+    environment:
+      MYSQL_DATABASE: manage_habit
+      MYSQL_USER: default
+      MYSQL_PASSWORD: default
+      MYSQL_ROOT_PASSWORD: default
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
