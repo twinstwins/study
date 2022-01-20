@@ -1,0 +1,137 @@
+body,
+h1 {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family : YuGothic, '游ゴシック', 'メイリオ', sans-serif;
+}
+h1 {
+    padding: 8px 0 4px;
+    font-size: 24px;
+    color: #039BE5;
+}
+h1 span {
+    font-size: 16px;
+}
+header {
+    box-sizing: border-box;
+    height: 100px;
+    text-align: center;
+    border-bottom: 6px solid #039BE5;
+}
+header input[type="text"] {
+    width: 240px;
+    line-height: 32px;
+    font-size: 16px;
+    margin: 0;
+    padding: 0 4px;
+    vertical-align: middle;
+    border: 1px solid #039BE5;
+    box-sizing: border-box;
+}
+header button {
+    cursor: pointer;
+    font-size: 16px;
+    vertical-align: middle;
+    width: 80px;
+    line-height: 32px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #039BE5;
+    background-color: #039BE5;
+    color: #fff;
+}
+.item-list {
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    float: left;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.item-list input[type="radio"],
+.item-list label {
+    vertical-align: middle;
+    cursor: pointer;
+}
+.item-list label {
+    background-color: #01579B;
+    color: #fff;
+    padding: 4px 0;
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+}
+.nonMessage {
+    text-align: center;
+    font-weight: bold;
+    color: #3949AB;
+}
+.item {
+    overflow: hidden;
+    clear: both;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    box-sizing: border-box;
+}
+.item:hover {
+    background-color: #E1F5FE;
+}
+.selected {
+    background-color: #E1F5FE;
+}
+.item figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-basis: 80px;
+    padding: 0;
+    margin: 0;
+}
+.item p {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    flex-basis: 320px;
+    padding-right: 4px;
+}
+.item-details {
+    box-sizing: border-box;
+    padding: 32px;
+    margin: 0;
+    width: (100vw - 400px);
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.details-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.details-link a {
+    margin-top: 16px;
+    display: block;
+    width: 240px;
+    background-color: #e53935;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 1;
+    transition: .3s;
+    margin-bottom: 32px;
+}
+.details-link a:hover {
+    opacity: .7;
+}
