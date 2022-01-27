@@ -9,7 +9,7 @@ import BookSearch from "./BookSearch";
 ReactDOM.render(
   <React.StrictMode>
       <BookSearch/>
-    <App />
+    {/*<App />*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
