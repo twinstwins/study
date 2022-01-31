@@ -1,11 +1,27 @@
-const BookSearchResult = () => {
+const BookSearchResult = (props) => {
+
+    const displayRadioButton = () => {
+        if (props.result.length !== 0) {
+            return <BookSearchFormRadio sortType={props.sortType} />;
+        }
+        return null;
+    };
+
+    const displayItemNodes = () => {
+        if (props.result.length !== 0) {
+            return props.result.map((item) => (
+                <BookSearchItem selectedItem={props.selectedItem} />
+            ));
+        }
+        return null;
+    };
+
     return (
         <div className="item-list">
-            <BookSearchFormRadio />
+            {displayRadioButton()}
+
             <div>
-                <BookSearchItem />
-                <BookSearchItem />
-                <BookSearchItem />
+                {displayItemNodes()}
             </div>
         </div>
     );
@@ -18,7 +34,7 @@ const BookSearchFormRadio = () => {
                 <input id="sales" type="radio" name="sort" value="" /> 売れている順
             </label>
             <label htmlFor="releaseDate">
-                <input id="relesaseDate" type="radio" name="sort" value="" /> 発売順
+                <input id="releaseDate" type="radio" name="sort" value="" /> 発売順
             </label>
         </div>
     );

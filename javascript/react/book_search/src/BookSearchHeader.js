@@ -1,10 +1,10 @@
-const BookSearchHeader = () => {
+const BookSearchHeader = (props) => {
     return (
         <header>
             <h1>
                 BookSearch! <span>by 楽天ブックス</span>
             </h1>
-            <BookSearchFormInput />
+            <BookSearchFormInput keyword={props.keyword} />
             <BookSearchFormButton />
         </header>
     );
