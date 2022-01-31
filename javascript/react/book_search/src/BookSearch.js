@@ -2,6 +2,7 @@ import React from "react";
 import BookSearchHeader from "./BookSearchHeader";
 import BookSearchResult from "./BookSearchResult";
 import BookSearchDetails from "./BookSearchDetails";
+import OnOffButton from "./OnOffButton";
 
 class BookSearch extends React.Component {
 
@@ -21,6 +22,8 @@ class BookSearch extends React.Component {
     render() {
         return (
             <div>
+
+                <OnOffButton buttonName="あああ"/>
 
                 <BookSearchHeader keyword={this.state.keyword} />
                 <BookSearchResult
