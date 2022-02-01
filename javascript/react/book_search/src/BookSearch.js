@@ -19,6 +19,8 @@ class BookSearch extends React.Component {
         };
         // コールバック関数としてthisが機能するようにthisをbindする
         this.handleInput = this.handleInput.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+
     }
 
     // 引数eventにはイベントオブジェクトが渡されます
@@ -30,6 +32,16 @@ class BookSearch extends React.Component {
         this.setState({ keyword: newKeyword });
     }
 
+    handleClick() {
+        // this.state.keywordが空でなかった場合
+        if (this.state.keyword !== '') {
+            // this.setFetchedData()メソッドを呼び出す
+            // this.setFetchedData();
+
+            console.log('検索する');
+        }
+    }
+
     render() {
         return (
             <div>
@@ -39,6 +51,7 @@ class BookSearch extends React.Component {
                 <BookSearchHeader
                     keyword={this.state.keyword}
                     handleInput={this.handleInput}
+                    handleClick={this.handleClick}
                 />
 
                 <BookSearchResult

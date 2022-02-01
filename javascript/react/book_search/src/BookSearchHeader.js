@@ -8,7 +8,7 @@ const BookSearchHeader = (props) => {
                 keyword={props.keyword}
                 handleInput={props.handleInput}
             />
-            <BookSearchFormButton />
+            <BookSearchFormButton handleClick={props.handleClick}/>
         </header>
     );
 };
@@ -16,13 +16,16 @@ const BookSearchHeader = (props) => {
 
 const BookSearchFormInput = (props) => {
     return (
-        <input type="text" placeholder="キーワード" value={props.keyword} onChange={props.handleInput} />
+        <input type="text" placeholder="キーワード"
+               value={props.keyword}
+               onChange={props.handleInput}
+        />
     )
 };
 
 
-const BookSearchFormButton = () => {
-    return <button>検索</button>;
+const BookSearchFormButton = (props) => {
+    return <button onClick={props.handleClick}>検索</button>;
 };
 
 export default BookSearchHeader;
