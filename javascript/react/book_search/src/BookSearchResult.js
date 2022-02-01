@@ -6,13 +6,26 @@ const BookSearchResult = (props) => {
         }
         return null;
     };
-
     const displayItemNodes = () => {
-        if (props.result.length !== 0) {
+        // props.result.lengthが「0」（検索結果がなく）かつ
+        // props.isStartedがfalseではない（検索を1回以上行なっている）場合
+        if (props.result.length === 0 && props.isStarted !== false) {
+            // 検索結果がない旨のメッセージを表示
+            return <p className="nonMessage">お探しの書籍はありませんでした</p>;
+            // 上記の条件以外の場合だが、props.isStartedはfalseではない場合（検索結果がある場合）
+        } else if (props.isStarted !== false) {
+            // props.resultをmap()メソッドで展開し、
+            // それぞれの要素の数だけBookSearchItemコンポーネントを生成し、
+            // 検索結果をitemとkeyという名前をつけて渡す
             return props.result.map((item) => (
-                <BookSearchItem selectedItem={props.selectedItem} />
+                <BookSearchItem
+                    item={item}
+                    key={item.itemUrl}
+                    selectedItem={props.selectedItem}
+                />
             ));
         }
+        // 最初の状態: 何も表示しない
         return null;
     };
 
@@ -40,15 +53,14 @@ const BookSearchFormRadio = () => {
     );
 };
 
-const BookSearchItem = () => {
+const BookSearchItem = (props) => {
     return (
         <div className="item">
             <figure>
-                <img src="" alt="本の画像" />
+                <img src={props.item.smallImageUrl} alt={props.item.title} />
             </figure>
-            <p>本のタイトル</p>
+            <p>{props.item.title}</p>
         </div>
     );
 };
-
 export default BookSearchResult

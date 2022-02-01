@@ -36,11 +36,55 @@ class BookSearch extends React.Component {
         // this.state.keywordが空でなかった場合
         if (this.state.keyword !== '') {
             // this.setFetchedData()メソッドを呼び出す
-            // this.setFetchedData();
+            this.setFetchedData();
 
             console.log('検索する');
         }
     }
+
+    fetchData(callback) {
+        // リクエストURLのパラメータの定義
+        const params = '?'
+            + 'formatVersion=2'
+            + '&applicationId=1099653992997915194'
+            + `&sort=${this.state.sortType}`
+            + `&keyword=${this.state.keyword}`;
+
+        // Fecth APIを使った非同期通信
+        fetch(`https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404${params}`, {
+            method: 'get',
+        }).then((response) => {
+
+            console.log(response);
+
+            // レスポンスのstatusが200だった場合
+            if (response.status === 200) {
+                // レスポンスの結果をjson形式で返します
+                return response.json();
+            }
+        }).then(
+            // レスポンスをコールバック関数の引数に渡し、コールバック関数を返します。
+            (response) => { callback(response.Items) }
+        ).catch(
+            // エラーだった場合
+            response => console.error(response)
+        );
+    }
+
+    setFetchedData() {
+        // this.fetchData()メソッドを呼び出す
+        this.fetchData(
+            // コールバック関数: 引数apiResultを通して検索結果を受け取り、
+            // this.setState()メソッドを呼び出す
+            apiResult => this.setState({
+                result: apiResult,
+                isStarted: true,
+            }),
+        );
+
+        console.log(this.state, 'ステート');
+    }
+
 
     render() {
         return (
