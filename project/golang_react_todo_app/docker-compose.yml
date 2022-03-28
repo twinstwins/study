@@ -1,11 +1,10 @@
-version: '3'
+version: "3"
 services:
-
   nginx:
     container_name: nginx
-    # build:
-      # context: .
-      # dockerfile: ./docker/nginx/Dockerfile
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
     image: nginx:latest
     ports:
       - 80:80
@@ -14,22 +13,28 @@ services:
 
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./react-app/react-app/build:/var/www
       # 通信テスト用
-      - ./docker/nginx/html:/usr/share/nginx/html
+      # - ./docker/nginx/html:/usr/share/nginx/html
 
-  # react:
-  #   build:
-  #     context: .
-  #     dockerfile: ./docker/react/Dockerfile
-  #   container_name: react_container
-  #   tty: true
-  #   volumes:
-  #   - ./react-app:/app/react
-  #   command: sh -c "cd /app/react/react-app && yarn start"
-  #   ports:
-  #     - 3000:3000
+    depends_on:
+      - react
 
-  # go:    
+  react:
+    build:
+      context: .
+      dockerfile: ./docker/react/Dockerfile
+    container_name: react_container
+    tty: true
+    volumes:
+      - ./react-app:/app/react
+    command: sh -c "cd /app/react/react-app && yarn start"
+    ports:
+      - 3000:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=trues
+
+  # go:
   #   container_name: go_container
   #   build:
   #     context: .
@@ -38,9 +43,6 @@ services:
   #     - 8000:8000
   #   tty: true
 
-
-
- 
   #以下、追記
   # mysql:
   #   build:
@@ -59,7 +61,6 @@ services:
   #   - 3306:3306
   #   links:
   #     - go
-
 
   # phpmyadmin:
   #   image: phpmyadmin/phpmyadmin
