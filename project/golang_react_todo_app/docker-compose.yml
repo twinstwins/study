@@ -20,28 +20,31 @@ services:
     depends_on:
       - react
 
-  react:
-    build:
-      context: .
-      dockerfile: ./docker/react/Dockerfile
-    container_name: react_container
-    tty: true
-    volumes:
-      - ./react-app:/app/react
-    command: sh -c "cd /app/react/react-app && yarn start"
-    ports:
-      - 3000:3000
-    environment:
-      - CHOKIDAR_USEPOLLING=trues
-
-  # go:
-  #   container_name: go_container
+  # react:
   #   build:
   #     context: .
-  #     dockerfile: ./docker/golang/Dockerfile
-  #   ports:
-  #     - 8000:8000
+  #     dockerfile: ./docker/react/Dockerfile
+  #   container_name: react_container
   #   tty: true
+  #   volumes:
+  #     - ./react-app:/app/react
+  #   command: sh -c "cd /app/react/react-app && yarn start"
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=trues
+
+  go:
+    container_name: golang
+    build:
+      context: .
+      dockerfile: ./docker/golang/Dockerfile
+    ports:
+      - 8000:8000
+    tty: true
+
+    volumes:
+      - ./go-app/src:/go/src
 
   #以下、追記
   # mysql:
@@ -52,13 +55,13 @@ services:
   #   environment:
   #     MYSQL_ROOT_PASSWORD: root
   #     MYSQL_DATABASE: react-go-app
-  #     TZ: 'Asia/Tokyo'
+  #     TZ: "Asia/Tokyo"
   #   volumes:
   #     - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
   #     - ./docker/mysql/conf.d:/etc/mysql/conf.d
   #     - ./docker/mysql/mysql_data:/var/lib/mysql
   #   ports:
-  #   - 3306:3306
+  #     - 3306:3306
   #   links:
   #     - go
 

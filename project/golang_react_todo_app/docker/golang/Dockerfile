@@ -1,25 +1,18 @@
-FROM golang:alpine
+# ベースとなるDockerイメージ指定
+FROM golang:latest
 
-RUN apk update
+RUN apt-get update
+# RUN apt-get git 
 
-RUN apk add git
+# GOPATHクリア
+ENV GOPATH= 
 
-RUN apk add alpine-sdk
-COPY ./go-app /app/go
-WORKDIR /app/go
+RUN go mod init go
 
-RUN	go mod init example.com/m/v2
+RUN go get -u github.com/gin-gonic/gin
+RUN go get github.com/jinzhu/gorm
+RUN go get github.com/go-sql-driver/mysql
 
-# RUN go build -o main .
+WORKDIR /go/src
 
-# CMD [ "/app/go/main" ]
-
-RUN apk update
-RUN apk add --no-cache git
-RUN go get -u github.com/gin-gonic/gin 
-# RUN go get -u github.com/golang/dep/cmd/dep
-# RUN dep ensure
-
-# CMD gin -i run
-
-RUN go run main.go
+CMD ["go","run","main.go"]
