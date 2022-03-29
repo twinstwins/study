@@ -42,7 +42,6 @@ services:
     ports:
       - 8000:8000
     tty: true
-    # command: air -c .air.toml
 
     volumes:
       - ./go-app/src:/go/src

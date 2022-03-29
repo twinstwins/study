@@ -57,21 +57,20 @@ type Task struct {
 }
 
 // db接続テスト
-// TODO 作業途中
 func dbResponse(c *gin.Context) {
+    // 環境変数読み込み
+    err := godotenv.Load(".env")
+    if err != nil {
+        fmt.Printf("読み込み出来ませんでした: %v", err)
+	} 
 
-    // err := godotenv.Load(".env")
-    // if err != nil {
-        // fmt.Printf("読み込み出来ませんでした: %v", err)
-	// } 
-
-    // USER := os.Getenv("DB_USER")
-    // PASS := os.Getenv("DB_PASS")
-    // DBNAME := os.Getenv("DB_NAME")
-    // HOST := "tcp(mysql:3306)"
-    // CONNECT := USER + ":" + PASS + "@" + HOST + "/" + DBNAME
-
-    CONNECT := "root:root@tcp(mysql:3306)/react-go-app"
+    // DB接続設定
+    DB_USER := os.Getenv("DB_USER")
+    DB_PASS := os.Getenv("DB_PASS")
+    DBNAME := os.Getenv("DB_NAME")
+    HOST := "tcp(mysql:3306)"
+    // "root:root@tcp(mysql:3306)/react-go-app"
+    CONNECT := DB_USER + ":" + DB_PASS + "@" + HOST + "/" + DBNAME
 
     // DBに接続
     db, err := gorm.Open("mysql", CONNECT)
