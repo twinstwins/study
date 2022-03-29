@@ -47,23 +47,24 @@ services:
       - ./go-app/src:/go/src
 
   #以下、追記
-  # mysql:
-  #   build:
-  #     context: .
-  #     dockerfile: ./docker/mysql/Dockerfile
-  #   container_name: mysql_container
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: react-go-app
-  #     TZ: "Asia/Tokyo"
-  #   volumes:
-  #     - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
-  #     - ./docker/mysql/conf.d:/etc/mysql/conf.d
-  #     - ./docker/mysql/mysql_data:/var/lib/mysql
-  #   ports:
-  #     - 3306:3306
-  #   links:
-  #     - go
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: react-go-app
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    links:
+      - go
 
   # phpmyadmin:
   #   image: phpmyadmin/phpmyadmin
