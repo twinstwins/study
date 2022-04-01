@@ -60,7 +60,7 @@ func main() {
      
 
      router.GET("api/task/:id", getTask)
-    //  router.GET("api/tasks", getTasks)
+     router.GET("api/tasks", getTasks)
      router.POST("api/task", postTask)
      router.PUT("api/task/:id", putTask)
      router.DELETE("api/task/:id", deleteTask)
@@ -110,6 +110,16 @@ func getTask(c *gin.Context){
     task := Task{}
     db.Where("ID = ?", id).First(&task)
     c.JSON(http.StatusOK, task)
+}
+
+func getTasks(c *gin.Context){
+    // 動作確認用 curl -X GET localhost:8000/api/tasks
+    db := gormConnect()
+
+    var tasks []Task  
+    db.Find(&tasks)
+
+    c.JSON(http.StatusOK, tasks)
 }
 
 func postTask(c *gin.Context){
