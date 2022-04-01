@@ -62,7 +62,7 @@ func main() {
      router.GET("api/task/:id", getTask)
     //  router.GET("api/tasks", getTasks)
      router.POST("api/task", postTask)
-    //  router.PUT("/somePut", PutTask)
+     router.PUT("api/task/:id", putTask)
     //  router.DELETE("/someDelete", DeleteTask)
 
 
@@ -123,6 +123,22 @@ func postTask(c *gin.Context){
     result := db.Create(&task) 
 
     c.JSON(http.StatusOK, result)
+}
+
+func putTask(c *gin.Context){
+    // 動作確認用　curl -X PUT localhost:8000/api/task/30 -d 'name=bbbb'
+    db := gormConnect()
+    task := Task{}
+
+    // ID でユーザー取得
+    id := c.Param("id")
+    db.First(&task, id)
+
+    name := c.PostForm("name")
+    task.Name = name
+    
+    db.Save(&task)
+    c.JSON(http.StatusOK, task)
 }
 
 // db接続テスト
