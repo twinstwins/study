@@ -113,7 +113,7 @@ func getTask(c *gin.Context){
 }
 
 func postTask(c *gin.Context){
-
+    // 動作確認用　curl -X POST localhost:8000/api/task -d 'name=aaa'
     task := Task{}
 
     name := c.PostForm("name")
