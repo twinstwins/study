@@ -52,12 +52,16 @@ func main() {
 
 
     // ルーティング
+
+    //TODO api/ は共通なのでグループ化
      router.GET("api/ping", testResponse)
      router.GET("api/env", envResponse)
      router.GET("api/db", dbResponse)
      
+
      router.GET("api/task/:id", getTask)
-    //  router.POST("/somePost", postTask)
+    //  router.GET("api/tasks", getTasks)
+     router.POST("api/task", postTask)
     //  router.PUT("/somePut", PutTask)
     //  router.DELETE("/someDelete", DeleteTask)
 
@@ -106,6 +110,19 @@ func getTask(c *gin.Context){
     task := Task{}
     db.Where("ID = ?", id).First(&task)
     c.JSON(http.StatusOK, task)
+}
+
+func postTask(c *gin.Context){
+
+    task := Task{}
+
+    name := c.PostForm("name")
+    task.Name = name
+
+    db := gormConnect()
+    result := db.Create(&task) 
+
+    c.JSON(http.StatusOK, result)
 }
 
 // db接続テスト
