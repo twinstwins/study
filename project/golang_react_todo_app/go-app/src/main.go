@@ -63,7 +63,7 @@ func main() {
     //  router.GET("api/tasks", getTasks)
      router.POST("api/task", postTask)
      router.PUT("api/task/:id", putTask)
-    //  router.DELETE("/someDelete", DeleteTask)
+     router.DELETE("api/task/:id", deleteTask)
 
 
     // ルーターを起動して 8000 でリクエストを待つ
@@ -138,6 +138,15 @@ func putTask(c *gin.Context){
     task.Name = name
     
     db.Save(&task)
+    c.JSON(http.StatusOK, task)
+}
+
+func deleteTask(c *gin.Context){
+    // 動作確認用　curl -X DELETE localhost:8000/api/task/何らかのid
+    db := gormConnect()
+    task := Task{}
+
+    db.Delete(&task)
     c.JSON(http.StatusOK, task)
 }
 
