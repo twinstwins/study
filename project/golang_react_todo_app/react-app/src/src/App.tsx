@@ -9,14 +9,33 @@ import Form from "./components/Form";
 function App(props: any) {
   const [tasks, setTasks] = useState(props.tasks);
 
+  function loadTasks() {
+    const url = "http://localhost:80/api/tasks";
+    axios.get(url).then((response) => {
+      const data = response.data;
+
+      setTasks([...data]);
+      console.log("ロードタスク", data.tasks);
+    });
+  }
+
   function addTask(name: string) {
-    const newTask = { id: "id", name: name, completed: false };
-    setTasks([...tasks, newTask]);
+    const newTask = { name: name };
+
+    const params = new URLSearchParams();
+    params.append("name", name);
+
+    const url = "http://localhost:80/api/task";
+    axios.post(url, params).then((response) => {
+      console.log(response);
+
+      loadTasks();
+    });
   }
   const taskList = tasks.map((task: any) => (
     <Todo
-      id={task.id}
-      name={task.name}
+      id={task.Id}
+      name={task.Name}
       completed={task.completed}
       key={task.id}
     />
@@ -25,6 +44,10 @@ function App(props: any) {
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
+
+      <button type="button" onClick={loadTasks}>
+        ロード
+      </button>
 
       <Form addTask={addTask} />
 
