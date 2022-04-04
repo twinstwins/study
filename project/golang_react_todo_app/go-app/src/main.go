@@ -97,6 +97,8 @@ func envResponse(c *gin.Context) {
 type Task struct {
     Id string  `gorm:"column:id"`
     Name  string  `gorm:"column:name"`
+
+    // TODO 変更すること
     isFinished bool  `gorm:"column:age"`
 }
 
@@ -154,10 +156,10 @@ func putTask(c *gin.Context){
 func deleteTask(c *gin.Context){
     // 動作確認用　curl -X DELETE localhost:8000/api/task/何らかのid
     db := gormConnect()
-    task := Task{}
+    id := c.Param("id")
 
-    db.Delete(&task)
-    c.JSON(http.StatusOK, task)
+    result := db.Delete(&Task{}, id)
+    c.JSON(http.StatusOK,result)
 }
 
 // db接続テスト

@@ -1,6 +1,15 @@
 import React from "react";
+import axios from "axios";
 
 export default function Todo(props: any) {
+  function deleteTask(): void {
+    console.log(props, "props");
+    const url = `http://localhost:80/api/task/${props.id}`;
+    axios.delete(url).then((response) => {
+      console.log(response);
+    });
+  }
+
   return (
     <li className="todo stack-small">
       <div className="c-cb">
@@ -12,10 +21,10 @@ export default function Todo(props: any) {
 
       <div className="btn-group">
         <button type="button" className="btn">
-          Edit <span className="visually-hidden">Eat</span>
+          編集 <span className="visually-hidden">Eat</span>
         </button>
-        <button type="button" className="btn btn__danger">
-          Delete <span className="visually-hidden">Eat</span>
+        <button type="button" onClick={deleteTask}>
+          削除 <span className="visually-hidden">Eat</span>
         </button>
       </div>
     </li>
