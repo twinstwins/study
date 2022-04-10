@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ToggleSwitch.scss";
 
 type Props = {
-  text: string;
-  isClicked: boolean;
+  on: boolean;
 };
+
+function handleClick() {
+  console.log("クリック");
+}
 
 const ToggleSwitch = (props: Props) => {
+  const on = props.on;
+
   return (
-    <div>
-      <h2>{props.text}</h2>
-      <h1>{props.isClicked}</h1>
-    </div>
+    <button
+      onClick={handleClick}
+      className={"btn-toggle " + (on ? "active" : "")}
+    >
+      <div className="handle"></div>
+    </button>
   );
 };
-
 export default ToggleSwitch;
