@@ -1,11 +1,11 @@
 import React from "react";
-import "./Sample.scss";
+import "./SampleComponent.scss";
 
 type Props = {
   variant: string;
 };
 
-const Button: React.FC<Props> = (props) => {
+const SampleComponent: React.FC<Props> = (props) => {
   const { variant, children, ...rest } = props;
   return (
     <button className={`button ${variant}`} {...rest}>
@@ -14,4 +14,4 @@ const Button: React.FC<Props> = (props) => {
   );
 };
 
-export default Button;
+export default SampleComponent;
