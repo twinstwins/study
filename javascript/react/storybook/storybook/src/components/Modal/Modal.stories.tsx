@@ -6,7 +6,7 @@ export default {
   component: Modal,
 };
 
-const ModalUseCase: React.FC = () => {
+const Sample: React.FC = () => {
   const [show, setShow] = useState(false);
   const content = <h2>コンテンツ</h2>;
 
@@ -18,4 +18,4 @@ const ModalUseCase: React.FC = () => {
   );
 };
 
-export const modalUseCase = () => <ModalUseCase />;
+export const sample = () => <Sample />;
