@@ -7,7 +7,7 @@ type Props = {
   variant: string;
 };
 
-const Form1: React.FC<Props> = (props) => {
+const FormInput: React.FC<Props> = (props) => {
   const { variant, children, ...rest } = props;
 
   const [value, setValue] = useState("");
@@ -34,4 +34,4 @@ const Form1: React.FC<Props> = (props) => {
   );
 };
 
-export default Form1;
+export default FormInput;

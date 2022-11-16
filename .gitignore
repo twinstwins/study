@@ -1,0 +1,6 @@
+
+javascript/*/*/node_modules
+javascript/*/*/build
+javascript/*/*/public
+
+graphql/*/node_modules

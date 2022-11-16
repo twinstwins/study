@@ -43,7 +43,7 @@ function App(props: any) {
 
   return (
     <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
+      <h1>TodoApp</h1>
 
       <button type="button" onClick={loadTasks}>
         ロード

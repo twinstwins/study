@@ -1,0 +1,40 @@
+.form-1 .group {
+  position: relative;
+}
+
+.form-1 label {
+  position: absolute;
+  top: 7px;
+  color: #a9a9a9;
+  cursor: text;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.form-1 input {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(92%, transparent), color-stop(8%, #1abc9c)) no-repeat;
+  background: linear-gradient(to bottom, transparent 92%, #1abc9c 8%) no-repeat;
+  background-position: -300px 0;
+  background-size: 300px 100%;
+  display: block;
+  width: 250px;
+  padding: 5px 0;
+  margin-top: 30px;
+  border: none;
+  border-bottom: solid 1px #1abc9c;
+  font-size: 15px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.form-1 input:focus, .form-1 input:valid {
+  background-position: 0 0;
+  outline: none;
+}
+
+.form-1 input:focus ~ label, .form-1 input:valid ~ label {
+  top: -12px;
+  color: #1abc9c;
+  font: 700 12px Roboto;
+}
+/*# sourceMappingURL=FormInput.css.map */

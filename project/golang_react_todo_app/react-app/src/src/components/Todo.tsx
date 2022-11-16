@@ -10,6 +10,16 @@ export default function Todo(props: any) {
     });
   }
 
+  function editTask(): void {
+    console.log(props, "props");
+    const url = `http://localhost:80/api/task/${props.id}`;
+    const params = new URLSearchParams();
+    // params.append("name", name);
+    axios.put(url, params).then((response) => {
+      console.log(response);
+    });
+  }
+
   return (
     <li className="todo stack-small">
       <div className="c-cb">
