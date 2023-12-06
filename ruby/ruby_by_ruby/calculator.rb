@@ -25,8 +25,7 @@ def evaluate(tree)
         end
         last
     when "func_call"
-        p(tree[1])
-        p(tree[2])
+        p(evaluate(tree[2]))
     end
 end
 
@@ -34,4 +33,3 @@ end
 str = minruby_load()
 tree = minruby_parse(str)
 answer = evaluate(tree)
-p(answer)
