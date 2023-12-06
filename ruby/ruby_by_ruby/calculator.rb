@@ -1,28 +1,37 @@
 require "./minruby.rb"
 
 def evaluate(tree)
-    if tree[0] == "lit"
+    case tree[0] 
+    when "lit"
         tree[1]
-    elsif tree[0] == "+"
+    when  "+"
         evaluate(tree[1]) + evaluate(tree[2])
-    elsif tree[0] == "-"
+    when "-"
         evaluate(tree[1]) - evaluate(tree[2])
-    elsif tree[0] == "*"
+    when "*"
         evaluate(tree[1]) * evaluate(tree[2])
-    elsif tree[0] == "/"
+    when "/"
         evaluate(tree[1]) / evaluate(tree[2])
-    elsif tree[0] == "%"
+    when "%"
         evaluate(tree[1]) % evaluate(tree[2])
-    elsif tree[0] == "**"
+    when "**"
         evaluate(tree[1]) ** evaluate(tree[2])
-    elsif tree[0] == "func_call"
+    when "stmts"
+        i = 1
+        last = nil
+        while tree[i] != nil
+            last = evaluate(tree[i])
+            i = i + 1
+        end
+        last
+    when "func_call"
         p(tree[1])
         p(tree[2])
     end
 end
 
 
-str = gets
+str = minruby_load()
 tree = minruby_parse(str)
 answer = evaluate(tree)
 p(answer)
