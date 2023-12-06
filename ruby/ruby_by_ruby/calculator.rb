@@ -23,7 +23,7 @@ def evaluate(tree)
             last = evaluate(tree[i])
             i = i + 1
         end
-        last
+        last # 最後に評価した式の値を返す。プログラム的にはあまり意味はないが複文の値を返すという点では意味がある
     when "func_call"
         p(evaluate(tree[2]))
     end
