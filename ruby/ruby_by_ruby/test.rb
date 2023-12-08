@@ -35,3 +35,18 @@ while i < 5
     p(i)
     i = i + 1
 end
+
+# fizzbuzz
+i = 1
+while i < 16
+    if i % 15 == 0
+        p("FizzBuzz 15の倍数")
+    elsif i % 3 == 0
+        p("Fizz 3の倍数")
+    elsif i % 5 == 0
+        p("Buzz 5の倍数")
+    else
+        p(i)
+    end
+    i = i + 1
+end
