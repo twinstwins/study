@@ -23,6 +23,12 @@ def evaluate(tree, env)
         evaluate(tree[1], env) > evaluate(tree[2], env)
     when "<"
         evaluate(tree[1], env) < evaluate(tree[2], env)
+    when "if"
+        if evaluate(tree[1], env)
+            evaluate(tree[2], env)
+        else
+            evaluate(tree[3], env)
+        end
     when "var_assign"
         env[tree[1]] = evaluate(tree[2], env)
     when "var_ref"
