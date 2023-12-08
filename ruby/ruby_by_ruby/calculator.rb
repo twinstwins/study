@@ -5,7 +5,7 @@ def evaluate(tree, env)
     case tree[0] 
     when "lit"
         tree[1]
-    when  "+"
+    when "+"
         evaluate(tree[1], env) + evaluate(tree[2], env)
     when "-"
         evaluate(tree[1], env) - evaluate(tree[2], env)
@@ -17,6 +17,12 @@ def evaluate(tree, env)
         evaluate(tree[1], env) % evaluate(tree[2], env)
     when "**"
         evaluate(tree[1], env) ** evaluate(tree[2], env)
+    when "=="
+        evaluate(tree[1], env) == evaluate(tree[2], env)
+    when ">"
+        evaluate(tree[1], env) > evaluate(tree[2], env)
+    when "<"
+        evaluate(tree[1], env) < evaluate(tree[2], env)
     when "var_assign"
         env[tree[1]] = evaluate(tree[2], env)
     when "var_ref"
@@ -31,6 +37,7 @@ def evaluate(tree, env)
         last # 最後に評価した式の値を返す。プログラム的にはあまり意味はないが複文の値を返すという点では意味がある
     when "func_call"
         p(evaluate(tree[2], env))
+    
     else
         pp(tree)
         raise("invalid tree")
