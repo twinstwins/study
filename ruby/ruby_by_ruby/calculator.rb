@@ -29,7 +29,11 @@ def evaluate(tree, env)
         else
             evaluate(tree[3], env)
         end
-    when "var_assign"
+    when "while"
+        while evaluate(tree[1], env)
+            evaluate(tree[2], env)
+        end
+        when "var_assign"
         env[tree[1]] = evaluate(tree[2], env)
     when "var_ref"
         env[tree[1]]

@@ -28,3 +28,10 @@ if 0 == 0
 else
     p("失敗です")
 end
+
+# while文
+i = 0
+while i < 5
+    p(i)
+    i = i + 1
+end
