@@ -1,12 +1,10 @@
 package token
 
 type TokenType string
-
 type Token struct {
-	Type   TokenType
+	Type    TokenType
 	Literal string
 }
-
 const (
 	ILLEGAL = "ILLEGAL"
 	EOF     = "EOF"
@@ -16,11 +14,21 @@ const (
 	INT   = "INT"   // 1343456
 
 	// Operators
-	ASSIGN = "="
-	PLUS = "+"
+	ASSIGN   = "="
+	PLUS     = "+"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
 
-	// delimiters
-	COMMA = ","
+	LT = "<"
+	GT = ">"
+
+	EQ     = "=="
+	NOT_EQ = "!="
+
+	// Delimiters
+	COMMA     = ","
 	SEMICOLON = ";"
 
 	LPAREN = "("
@@ -28,7 +36,8 @@ const (
 	LBRACE = "{"
 	RBRACE = "}"
 
-	// keywords
+	// Keywords
 	FUNCTION = "FUNCTION"
-	LET = "LET"
+	LET      = "LET"
+	
 )
