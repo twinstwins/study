@@ -1,0 +1,16 @@
+{
+  "name": "vanilla_web_projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "vitest": "vitest",
+    "jest": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^28.1.1",
+    "vitest": "^0.14.1"
+  }
+}

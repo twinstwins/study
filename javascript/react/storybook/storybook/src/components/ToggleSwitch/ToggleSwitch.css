@@ -1,0 +1,32 @@
+.btn-toggle {
+  margin: 0 5rem;
+  padding: 0;
+  position: relative;
+  border: none;
+  height: 2.5rem;
+  width: 5rem;
+  border-radius: 2.5rem;
+}
+
+.btn-toggle .handle {
+  position: absolute;
+  top: 0.3125rem;
+  left: 0.3125rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 1.875rem;
+  background: #fff;
+  -webkit-transition: left 0.25s;
+  transition: left 0.25s;
+}
+
+.btn-toggle.active {
+  background-color: #29b5a8;
+}
+
+.btn-toggle.active .handle {
+  left: 2.8125rem;
+  -webkit-transition: left 0.25s;
+  transition: left 0.25s;
+}
+/*# sourceMappingURL=ToggleSwitch.css.map */

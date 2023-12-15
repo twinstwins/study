@@ -1,0 +1,41 @@
+.form-1 {
+  $color: #1abc9c;
+
+  .group {
+    position: relative;
+  }
+
+  label {
+    position: absolute;
+    top: 7px;
+    color: #a9a9a9;
+    cursor: text;
+    transition: 0.2s;
+  }
+
+  input {
+    background: linear-gradient(to bottom, transparent 92%, $color 8%) no-repeat;
+    background-position: -300px 0;
+    background-size: 300px 100%;
+    display: block;
+    width: 250px;
+    padding: 5px 0;
+    margin-top: 30px;
+    border: none;
+    border-bottom: solid 1px $color;
+    font-size: 15px;
+    transition: all 0.3s;
+
+    &:focus,
+    &:valid {
+      background-position: 0 0;
+      outline: none;
+
+      ~ label {
+        top: -12px;
+        color: $color;
+        font: 700 12px Roboto;
+      }
+    }
+  }
+}
