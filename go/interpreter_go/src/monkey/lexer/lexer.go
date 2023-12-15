@@ -1,7 +1,8 @@
 package lexer
 
-import "monkey/token"
-
+import (
+	"monkey/token"
+)
 type Lexer struct {
 	input        string
 	position     int  // current position in input (points to current char)
@@ -11,7 +12,7 @@ type Lexer struct {
 
 func New(input string) *Lexer {
 	l := &Lexer{input: input}
-	l.readChar()
+	l.readChar() // 最初の文字を読み込む	
 	return l
 }
 
