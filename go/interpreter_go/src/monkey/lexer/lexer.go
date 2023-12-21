@@ -16,6 +16,7 @@ func New(input string) *Lexer {
 	return l
 }
 
+// この表記法はGoにおけるメソッドのポインタレシーバと呼ばれるもの
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 	l.skipWhitespace()
